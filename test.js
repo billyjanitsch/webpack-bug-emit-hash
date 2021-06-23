@@ -7,7 +7,10 @@ function buildWebpackConfig(emit) {
     output: { clean: true },
     mode: "production",
     plugins: [
-      new ImageMinimizerPlugin({ minimizerOptions: { plugins: ["mozjpeg"] } }),
+      new ImageMinimizerPlugin({
+        loader: false,
+        minimizerOptions: { plugins: ["mozjpeg"] },
+      }),
     ],
     module: {
       rules: [{ test: /\.jpeg$/, type: "asset", generator: { emit } }],
